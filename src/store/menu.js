@@ -14,20 +14,14 @@ const menu = [
             { 
                 name: 'expendios',
                 text: 'Expendios',
-                icon: '\ue558'
             },
-
-            /* { 
-                name: 'propositos',
-                text: 'Propósitos',
-            }, */
-            /* { 
-                name: 'edades',
-                text: 'Edades',
-            }, */
             {
                 name: 'guias',
                 text: 'Guías'
+            },
+            { 
+                name: 'rutas',
+                text: 'Rutas',
             },
         ]
     }, 
@@ -58,6 +52,43 @@ const menu = [
             },
         ]
     },
+    {
+        text: 'Verificación P.M ',
+        icon: '\ue873',
+        routes: [
+            { 
+                name: 'rutadiaria',
+                text: 'Ruta Diaria',
+            },
+            { 
+                name: 'matrices',
+                text: 'Matrices',
+            },
+            { 
+                name: 'planillaordenbeneficio',
+                text: 'Planilla Diaria Orden Beneficio',
+            },
+            { 
+                name: 'inspeccionpostmortem',
+                text: 'Inspección Post Mortem',
+            },
+            { 
+                name: 'toleranciacerovisceras',
+                text: 'Tolerancia Cero Visceras',
+            },
+            { 
+                name: 'despachovisceras',
+                text: 'Despacho Visceras',
+            },
+            { 
+                name: 'comparaciondecomisos',
+                text: 'Comparación Decomisos',
+            },
+            
+
+            
+        ]
+    }
 ];
 
 export default {

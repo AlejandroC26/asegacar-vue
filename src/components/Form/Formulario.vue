@@ -48,6 +48,7 @@ import FormDate from "./Components/FormDate.vue";
 import FormTime from "./Components/FormTime.vue";
 import FormFileImage from "./Components/FormFileImage.vue";
 import FormLocalSelect from "./Components/FormLocalSelect.vue";
+import FormDualSelect from "./Components/FormDualSelect.vue";
 import FormOptionalDate from "./Components/Specials/FormOptionalDate.vue";
 import FormDepartmentCity from "./Components/Specials/FormDepartmentCity.vue";
 
@@ -96,6 +97,7 @@ export default {
     FormLocalSelect,
     FormDepartmentCity,
     FormOptionalDate,
+    FormDualSelect
   },
   data() {
     return {

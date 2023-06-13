@@ -41,7 +41,7 @@ export default {
         async onGetItems() {
             this.loadSelect = true;
             axiosServices.onAxiosGet(`${this.sEndPoint}`).then(aItems => {
-                let aNewOptions = [];
+                let aNewOptions = [ { value: "", text: "..." } ];
                 aItems.data.forEach(oItem => {
                     let sText = '';
                     if(oItem.hasOwnProperty('name')) {

@@ -91,6 +91,54 @@ const routes = [
     meta: { protectedRoute: true }
   },
   {
+    path: '/rutas',
+    name: 'Routes',
+    component: () => import('../views/Verification/Routes'),
+    meta: { protectedRoute: true }
+  },
+  {
+    path: '/rutadiaria',
+    name: 'DailyRoute',
+    component: () => import('../views/Verification/DailyRoute'),
+    meta: { protectedRoute: true }
+  },
+  {
+    path: '/matrices',
+    name: 'MasterTable',
+    component: () => import('../views/Verification/MasterTable'),
+    meta: { protectedRoute: true }
+  },
+  {
+    path: '/planillaordenbeneficio',
+    name: 'FormBenefitOrder',
+    component: () => import('../views/Verification/FormBenefitOrder'),
+    meta: { protectedRoute: true }
+  },
+  {
+    path: '/inspeccionpostmortem',
+    name: 'PostMortemInspection',
+    component: () => import('../views/Verification/PostMortemInspection'),
+    meta: { protectedRoute: true }
+  },
+  {
+    path: '/toleranciacerovisceras',
+    name: 'ZeroGutsTolerance',
+    component: () => import('../views/Verification/ZeroGutsTolerance'),
+    meta: { protectedRoute: true }
+  },
+  {
+    path: '/despachovisceras',
+    name: 'VisceraDispath',
+    component: () => import('../views/Verification/VisceraDispath'),
+    meta: { protectedRoute: true }
+  },
+  {
+    path: '/comparaciondecomisos',
+    name: 'SeizureComparison',
+    component: () => import('../views/Verification/SeizureComparison'),
+    meta: { protectedRoute: true }
+  },
+  {
     path: '/reportes',
     name: 'ReportsVue',
     component: () => import('../views/ReportsVue'),
