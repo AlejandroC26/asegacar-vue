@@ -52,9 +52,10 @@ export default {
           sFormatName: "Planilla diaria",
           aComponents: [
             {
-              sName: 'sacrifice_date',
-              sLabel: 'Fecha de sacrificio',
-              sComponent: 'FormDate',
+              sName: 'id_master',
+              sLabel: 'Fecha y Responsable',
+              sComponent: 'FormSelect',
+              sEndPoint: 'sltMaster/1',
               nCol: 12
             },
           ]

@@ -14,7 +14,7 @@
 <script>
 import { mapMutations, mapState } from 'vuex';
 import Aside from '../components/Aside.vue';
-import DefaultGrid from '../components/Grid/GridDailyPayroll.vue';
+import DefaultGrid from '../components/Grid/Grid.vue';
 import Right from '../components/Right.vue';
 
 export default {
@@ -30,11 +30,18 @@ export default {
             sEndPoint: 'dailyPayroll',
             aFields: [
                 {
+                    sName: 'id_master',
+                    sLabel: 'Fecha y Responsable',
+                    sComponent: 'FormSelect',
+                    sEndPoint: 'sltMaster/1',
+                    nCol: 6
+                },
+                {
                     sName: 'id_outlet',
                     sLabel: 'Expendio',
                     sComponent: 'FormSelect',
                     sEndPoint: 'sltOutlets',
-                    nCol: 12
+                    nCol: 6
                 },
                 {
                     sName: 'benefit_date',
@@ -44,30 +51,24 @@ export default {
                     nCol: 12
                 },
                 {
-                    sName: 'total_males',
-                    sLabel: 'Total de Machos',
-                    sComponent: 'FormNumber',
-                    nCol: 6
-                },
-                {
-                    sName: 'total_females',
-                    sLabel: 'Total de Hembras',
-                    sComponent: 'FormNumber',
-                    nCol: 6
-                },
-                {
-                    sName: 'colors',
-                    sLabel: 'Colores',
-                    sComponent: 'FormMultiSelect',
+                    sName: 'id_color',
+                    sLabel: 'Color',
+                    sComponent: 'FormSelect',
                     sEndPoint: 'colors',
                     nCol: 6
                 },
                 {
-                    sName: 'genders',
-                    sLabel: 'Sexos',
-                    sComponent: 'FormMultiSelect',
+                    sName: 'id_gender',
+                    sLabel: 'Sexo',
+                    sComponent: 'FormSelect',
                     sEndPoint: 'genders',
                     nCol: 6
+                },
+                {
+                    sName: 'amount',
+                    sLabel: 'Cantidad',
+                    sComponent: 'FormNumber',
+                    nCol: 12
                 },
                 {
                     sName: 'special_order',

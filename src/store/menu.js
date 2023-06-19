@@ -23,6 +23,10 @@ const menu = [
                 name: 'rutas',
                 text: 'Rutas',
             },
+            { 
+                name: 'matrices',
+                text: 'Matrices',
+            },
         ]
     }, 
     {
@@ -59,10 +63,6 @@ const menu = [
             { 
                 name: 'rutadiaria',
                 text: 'Ruta Diaria',
-            },
-            { 
-                name: 'matrices',
-                text: 'Matrices',
             },
             { 
                 name: 'planillaordenbeneficio',

@@ -31,7 +31,7 @@ export default {
             aFields: [
                 {
                     sName: 'id_responsable',
-                    sLabel: 'Responsable',
+                    sLabel: 'Responsable (opcional)',
                     sComponent: 'FormSelect',
                     sEndPoint: 'sltPersons',
                     nCol: 5
