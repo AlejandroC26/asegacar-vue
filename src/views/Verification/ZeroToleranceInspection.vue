@@ -18,7 +18,7 @@ import DefaultGrid from '@/components/Grid/Grid.vue';
 import Right from '@/components/Right.vue';
 
 export default {
-    name: 'VisceraDispatch',
+    name: 'ZeroToleranceInspection',
     components: {
         Aside,
         Right,
@@ -26,14 +26,14 @@ export default {
     },
     data: function(){
         return {
-            sTitle: 'Despacho Visceras',
-            sEndPoint: 'visceraDispatch',
+            sTitle: 'Inspección Cero Tolerancia',
+            sEndPoint: 'zeroToleranceInspection',
             aFields: [
             {
                     sName: 'id_master',
                     sLabel: 'Fecha',
                     sComponent: 'FormSelect',
-                    sEndPoint: 'sltMaster/7',
+                    sEndPoint: 'sltMaster/5',
                     nCol: 12
                 },
                 {
@@ -53,81 +53,33 @@ export default {
                     }
                 },
                 {
-                    sName: 'head',
-                    sLabel: 'Cabeza',
+                    sName: 'milk',
+                    sLabel: 'Leche',
                     sComponent: 'FormText',
                     nCol: 6
                 },
                 {
-                    sName: 'small_ints',
-                    sLabel: 'Ints. Delgado',
+                    sName: 'fecal_matter',
+                    sLabel: 'M. Fecal',
                     sComponent: 'FormText',
                     nCol: 6
                 },
                 {
-                    sName: 'large_ints',
-                    sLabel: 'Ints. Grueso',
+                    sName: 'rumen_content',
+                    sLabel: 'Contenido Rumial',
                     sComponent: 'FormText',
                     nCol: 6
                 },
                 {
-                    sName: 'panolon',
-                    sLabel: 'Pañolon',
+                    sName: 'corrective_actions',
+                    sLabel: 'Acciones Correctivas',
                     sComponent: 'FormText',
                     nCol: 6
                 },
                 {
-                    sName: 'rennet',
-                    sLabel: 'Cuajo',
-                    sComponent: 'FormText',
-                    nCol: 6
-                },
-                {
-                    sName: 'callus',
-                    sLabel: 'Callo',
-                    sComponent: 'FormText',
-                    nCol: 6
-                },
-                {
-                    sName: 'liver',
-                    sLabel: 'Hígado',
-                    sComponent: 'FormText',
-                    nCol: 6
-                },
-                {
-                    sName: 'lung',
-                    sLabel: 'Pulmones',
-                    sComponent: 'FormText',
-                    nCol: 6
-                },
-                {
-                    sName: 'legs',
-                    sLabel: 'Patas',
-                    sComponent: 'FormText',
-                    nCol: 6
-                },
-                {
-                    sName: 'hands',
-                    sLabel: 'Manos',
-                    sComponent: 'FormText',
-                    nCol: 6
-                },
-                {
-                    sName: 'udders',
-                    sLabel: 'Ubres',
-                    sComponent: 'FormText',
-                    nCol: 6
-                },
-                {
-                    sName: 'booklet',
-                    sLabel: 'Librillo',
-                    sComponent: 'FormText',
-                    nCol: 6
-                },
-                {
-                    sName: 'observations',
-                    sLabel: 'Observaciones',
-                    sComponent: 'FormArea',
+                    sName: 'quantity',
+                    sLabel: 'Cantidad',
+                    sComponent: 'FormNumber',
                     nCol: 12
                 },
             ]

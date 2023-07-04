@@ -30,7 +30,7 @@ export default {
             sEndPoint: 'users',
             aFields: [
                 {
-                    sName: 'id_persons',
+                    sName: 'id_person',
                     sLabel: 'Persona',
                     sComponent: 'FormSelect',
                     sEndPoint: 'sltPersons',
@@ -43,15 +43,12 @@ export default {
                     nCol: 8
                 },
                 {
-                    sName: 'position',
+                    sName: 'id_charge',
                     sLabel: 'Cargo',
-                    sComponent: 'FormLocalSelect',
+                    sComponent: 'FormSelect',
                     nCol: 4,
-                    options: [
-                        {  value: "Administrativo", text: 'Administrativo' },
-                        {  value: "Propietario", text: 'Propietario' },
-                        {  value: "Veterinario", text: 'Veterinario' },
-                    ]
+                    sEndPoint: 'sltCharges',
+            
                 },
                 {
                     sName: 'password',

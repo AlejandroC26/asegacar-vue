@@ -33,24 +33,8 @@ export default {
                     sName: 'id_master',
                     sLabel: 'Fecha',
                     sComponent: 'FormSelect',
-                    sEndPoint: 'sltMaster/7',
+                    sEndPoint: 'sltMaster/8',
                     nCol: 12
-                },
-                {
-                    sComponent: 'FormDualSelect',
-                    sName: 'id_antemortem_daily_record',
-                    sLabel: {
-                        first: 'Expendio',
-                        second: '# Animal'
-                    },
-                    nCol: 12,
-                    sEndPoint: {
-                        first: { 
-                            sField: 'id_outlet',
-                            sEndPoint: 'sltAntemoremOutlets'
-                        },
-                        second: 'sltAntemoremAnimals'
-                    }
                 },
                 {
                     sName: 'small_ints',

@@ -1,10 +1,14 @@
 <template>
   <div>
     <h1>{{ sTitle }}</h1>
-    <b-card-group deck class="mt-3">
-      <DownloadCard v-for="oCard, key in aDownloadCards" :key="key"
+    <b-card-group 
+      deck 
+      class="mt-3"
+      v-for="oGroup, gKey in aGroupCards" :key="`g-${gKey}`">
+      <DownloadCard v-for="oCard, key in oGroup.aCards" :key="key"
         :sHeader="oCard.sHeader" 
         :sEndPoint="oCard.sEndPoint"
+        :sVariant="oGroup.sVariant"
         :sFormatName="oCard.sFormatName"
         :aComponents="oCard.aComponents"
         @showModal="onShowModal"
@@ -30,13 +34,14 @@ export default {
   components: {
     Formulario,
     DownloadCard,
-    DownloadModal
+    DownloadModal,
   },
   props: {
     sTitle: {
       type: String,
       default: "",
     },
+    aGroupCards: {}
   },
   data() {
     return {
@@ -45,68 +50,6 @@ export default {
       sEndPoint: '',
       sFormatName: '',
       aComponents: [],
-      aDownloadCards: [
-        {
-          sHeader: "Planilla Diaria" ,
-          sEndPoint: "dailyPayroll",
-          sFormatName: "Planilla diaria",
-          aComponents: [
-            {
-              sName: 'id_master',
-              sLabel: 'Fecha y Responsable',
-              sComponent: 'FormSelect',
-              sEndPoint: 'sltMaster/1',
-              nCol: 12
-            },
-          ]
-        },
-        {
-          sHeader: "Edades Bobinos" ,
-          sEndPoint: "ageBobins",
-          sFormatName: "EDADES BOBINOS",
-          aComponents: [
-            {
-              sName: 'date',
-              sLabel: 'Fecha de sacrificio',
-              sComponent: 'FormDate',
-              nCol: 12
-            },
-          ]
-        },
-        {
-          sHeader: "Ante Morten" ,
-          sEndPoint: "antemortemDailyRecord",
-          sFormatName: "PLANILLA DIARIA ANTEMORTEM",
-          aComponents: [
-            {
-              sName: 'sacrifice_date',
-              sLabel: 'Fecha de Beneficio',
-              sComponent: 'FormDate',
-              nCol: 12
-            },
-          ]
-        },
-        {
-          sHeader: "Matriz Diaria" ,
-          sEndPoint: "dailyMatrix",
-          sFormatName: "MATRIZ DIARIA",
-          aComponents: [
-            {
-              sName: 'benefit_date',
-              sLabel: 'Fecha de Beneficio',
-              sComponent: 'FormDate',
-              nCol: 6
-            },
-            {
-              sName: 'format_code',
-              sLabel: 'Código de Formato',
-              sComponent: 'FormSelect',
-              sEndPoint: 'sltFormatCodes',
-              nCol: 6
-            },
-          ]
-        },
-      ]
     };
   },
   mounted() {},

@@ -67,12 +67,6 @@ const routes = [
     meta: { protectedRoute: true }
   },
   {
-    path: '/contratodeposito',
-    name: 'ContractDeposit',
-    component: () => import('../views/ContractDeposit'),
-    meta: { protectedRoute: true }
-  },
-  {
     path: '/planilladiaria',
     name: 'DailyPayroll',
     component: () => import('../views/DailyPayroll'),
@@ -136,6 +130,18 @@ const routes = [
     path: '/comparaciondecomisos',
     name: 'SeizureComparison',
     component: () => import('../views/Verification/SeizureComparison'),
+    meta: { protectedRoute: true }
+  },
+  {
+    path: '/inspeccioncerotolerancia',
+    name: 'ZeroToleranceInspection',
+    component: () => import('../views/Verification/ZeroToleranceInspection'),
+    meta: { protectedRoute: true }
+  },
+  {
+    path: '/acondicionamientodelacanal',
+    name: 'ChannelConditioning',
+    component: () => import('../views/Verification/ChannelConditioning'),
     meta: { protectedRoute: true }
   },
   {

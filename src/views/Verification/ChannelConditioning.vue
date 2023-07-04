@@ -18,7 +18,7 @@ import DefaultGrid from '@/components/Grid/Grid.vue';
 import Right from '@/components/Right.vue';
 
 export default {
-    name: 'VisceraDispatch',
+    name: 'ChannelConditioning',
     components: {
         Aside,
         Right,
@@ -26,14 +26,14 @@ export default {
     },
     data: function(){
         return {
-            sTitle: 'Despacho Visceras',
-            sEndPoint: 'visceraDispatch',
+            sTitle: 'Acondicionamiento De La Canal',
+            sEndPoint: 'channelConditioning',
             aFields: [
             {
                     sName: 'id_master',
                     sLabel: 'Fecha',
                     sComponent: 'FormSelect',
-                    sEndPoint: 'sltMaster/7',
+                    sEndPoint: 'sltMaster/6',
                     nCol: 12
                 },
                 {
@@ -53,83 +53,53 @@ export default {
                     }
                 },
                 {
-                    sName: 'head',
-                    sLabel: 'Cabeza',
+                    sName: 'skin',
+                    sLabel: 'Piel',
                     sComponent: 'FormText',
                     nCol: 6
                 },
                 {
-                    sName: 'small_ints',
-                    sLabel: 'Ints. Delgado',
+                    sName: 'hair',
+                    sLabel: 'Cabello',
                     sComponent: 'FormText',
                     nCol: 6
                 },
                 {
-                    sName: 'large_ints',
-                    sLabel: 'Ints. Grueso',
+                    sName: 'hematoma',
+                    sLabel: 'Hematoma',
                     sComponent: 'FormText',
                     nCol: 6
                 },
                 {
-                    sName: 'panolon',
-                    sLabel: 'Pañolon',
+                    sName: 'abscess',
+                    sLabel: 'Abseso',
                     sComponent: 'FormText',
                     nCol: 6
                 },
                 {
-                    sName: 'rennet',
-                    sLabel: 'Cuajo',
+                    sName: 'parasite',
+                    sLabel: 'Parásito',
                     sComponent: 'FormText',
                     nCol: 6
                 },
                 {
-                    sName: 'callus',
-                    sLabel: 'Callo',
+                    sName: 'other',
+                    sLabel: 'Otro',
                     sComponent: 'FormText',
                     nCol: 6
                 },
                 {
-                    sName: 'liver',
-                    sLabel: 'Hígado',
+                    sName: 'correction',
+                    sLabel: 'Corrección',
                     sComponent: 'FormText',
                     nCol: 6
                 },
                 {
-                    sName: 'lung',
-                    sLabel: 'Pulmones',
-                    sComponent: 'FormText',
+                    sName: 'quantity',
+                    sLabel: 'Cantidad',
+                    sComponent: 'FormNumber',
                     nCol: 6
-                },
-                {
-                    sName: 'legs',
-                    sLabel: 'Patas',
-                    sComponent: 'FormText',
-                    nCol: 6
-                },
-                {
-                    sName: 'hands',
-                    sLabel: 'Manos',
-                    sComponent: 'FormText',
-                    nCol: 6
-                },
-                {
-                    sName: 'udders',
-                    sLabel: 'Ubres',
-                    sComponent: 'FormText',
-                    nCol: 6
-                },
-                {
-                    sName: 'booklet',
-                    sLabel: 'Librillo',
-                    sComponent: 'FormText',
-                    nCol: 6
-                },
-                {
-                    sName: 'observations',
-                    sLabel: 'Observaciones',
-                    sComponent: 'FormArea',
-                    nCol: 12
-                },
+                }
             ]
         }
     },

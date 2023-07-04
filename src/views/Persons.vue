@@ -44,6 +44,13 @@ export default {
                     nCol: 6
                 },
                 {
+                    sName: 'expedition_city',
+                    sLabel: 'Ciudad de Expedición',
+                    sComponent: 'FormText',
+                    sEndPoint: '',
+                    nCol: 6
+                },
+                {
                     sName: 'adress',
                     sLabel: 'Dirección',
                     sComponent: 'FormText',
@@ -55,7 +62,7 @@ export default {
                     sLabel: 'Teléfono',
                     sComponent: 'FormText',
                     sEndPoint: '',
-                    nCol: 6
+                    nCol: 12
                 },
             ]
         }

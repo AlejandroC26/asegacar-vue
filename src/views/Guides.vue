@@ -14,7 +14,7 @@
 <script>
 import { mapMutations, mapState } from 'vuex';
 import Aside from '../components/Aside.vue';
-import DefaultGrid from '../components/Grid/Grid.vue';
+import DefaultGrid from '../components/Grid/GridGuides.vue';
 import Right from '../components/Right.vue';
 
 export default {
@@ -49,13 +49,6 @@ export default {
                     nCol: 6
                 },
                 {
-                    sName: 'state',
-                    sLabel: 'Estado',
-                    sComponent: 'FormState',
-                    sVisible: 'edit',
-                    nCol: 12
-                },
-                {
                     sName: 'id_owner',
                     sLabel: 'Propietario',
                     sComponent: 'FormSelect',
@@ -80,14 +73,23 @@ export default {
                     sName: 'id_source',
                     sLabel: 'Procedencia',
                     sComponent: 'FormDepartmentCity',
+                    sEndPoint: { field: 'id_department_source' },
                     nCol: 12
                 },
                 {
                     sName: 'id_destination',
                     sLabel: 'Destino',
                     sComponent: 'FormDepartmentCity',
+                    sEndPoint: { field: 'id_department_destination' },
                     nCol: 12
-                }
+                },
+                {
+                    sName: 'state',
+                    sLabel: 'Estado',
+                    sComponent: 'FormState',
+                    sVisible: 'edit',
+                    nCol: 12
+                },
             ]
         }
     },

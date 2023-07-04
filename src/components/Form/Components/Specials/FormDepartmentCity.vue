@@ -26,6 +26,7 @@ export default {
     props: {
         value: {},
         oValorField: {},
+        sEndPoint: {},
         sKeyField: {
             type: String,
             default: ''
@@ -43,8 +44,8 @@ export default {
             aCityOptions: []
         }
     },
-    mounted() {
-        this.onGetItems();
+    async mounted() {
+        await this.onGetItems();
     },
     methods: {
         async onGetItems() {
@@ -57,6 +58,9 @@ export default {
                 });
                 this.aDepartmentOptions = aNewOptions;
                 this.loadSelect = false;
+                if(Object.entries(this.oValorField).length > 0) {
+                    this.sDepartment = this.oValorField[`${this.sEndPoint.field}`];
+                }
             })
         },
     },

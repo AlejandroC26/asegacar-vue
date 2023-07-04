@@ -1,12 +1,10 @@
 <template>
     <div class="application-container">
-        <Aside/>
+        <Aside />
         <main>
-            <ReportsGrid 
-                :sTitle="sTitle"
-            />            
+            <ReportsGrid :sTitle="sTitle" :aGroupCards="aDownloadCards" />
         </main>
-        <Right/>
+        <Right />
     </div>
 </template>
 <script>
@@ -22,12 +20,200 @@ export default {
         Right,
         ReportsGrid
     },
-    data: function(){
+    data: function () {
         return {
             sTitle: 'Vista de Reportes',
+            aDownloadCards: [
+                {
+                    sVariant: 'primary',
+                    aCards: [
+                        {
+                            sHeader: "Planilla Diaria",
+                            sEndPoint: "dailyPayroll",
+                            sFormatName: "Planilla diaria",
+                            aComponents: [
+                                {
+                                    sName: 'id_master',
+                                    sLabel: 'Fecha y Responsable',
+                                    sComponent: 'FormSelect',
+                                    sEndPoint: 'sltMaster/1',
+                                    nCol: 12
+                                },
+                            ]
+                        },
+                        {
+                            sHeader: "Edades Bobinos",
+                            sEndPoint: "ageBobins",
+                            sFormatName: "EDADES BOBINOS",
+                            aComponents: [
+                                {
+                                    sName: 'date',
+                                    sLabel: 'Fecha de sacrificio',
+                                    sComponent: 'FormDate',
+                                    nCol: 12
+                                },
+                            ]
+                        },
+                        {
+                            sHeader: "Ante Morten",
+                            sEndPoint: "antemortemDailyRecord",
+                            sFormatName: "PLANILLA DIARIA ANTEMORTEM",
+                            aComponents: [
+                                {
+                                    sName: 'sacrifice_date',
+                                    sLabel: 'Fecha de Beneficio',
+                                    sComponent: 'FormDate',
+                                    nCol: 12
+                                },
+                            ]
+                        },
+                        {
+                            sHeader: "Matriz Diaria",
+                            sEndPoint: "dailyMatrix",
+                            sFormatName: "MATRIZ DIARIA",
+                            aComponents: [
+                                {
+                                    sName: 'benefit_date',
+                                    sLabel: 'Fecha de Beneficio',
+                                    sComponent: 'FormDate',
+                                    nCol: 6
+                                },
+                                {
+                                    sName: 'format_code',
+                                    sLabel: 'Código de Formato',
+                                    sComponent: 'FormSelect',
+                                    sEndPoint: 'sltFormatCodes',
+                                    nCol: 6
+                                },
+                            ]
+                        },
+                    ]
+                },
+                {
+                    sVariant: 'secondary',
+                    aCards: [
+                        // {
+                        //     sHeader: "Ruta Diaria",
+                        //     sEndPoint: "dailyRoutes",
+                        //     sFormatName: "Ruta Diaria",
+                        //     aComponents: [
+                        //         {
+                        //             sName: 'date',
+                        //             sLabel: 'Fecha',
+                        //             sComponent: 'FormDate',
+                        //             nCol: 12
+                        //         },
+                        //     ]
+                        // },
+                        {
+                            sHeader: "Orden Beneficio",
+                            sEndPoint: "formBenefitOrder",
+                            sFormatName: "Orden de Beneficio",
+                            aComponents: [
+                                {
+                                    sName: 'id_master',
+                                    sLabel: 'Fecha y Responsable',
+                                    sComponent: 'FormSelect',
+                                    sEndPoint: 'sltMaster/2',
+                                    nCol: 12
+                                },
+                            ]
+                        },
+                        {
+                            sHeader: "Inspección Post Mortem",
+                            sEndPoint: "postmortemInspections",
+                            sFormatName: "Orden de Beneficio",
+                            aComponents: [
+                                {
+                                    sName: 'id_master',
+                                    sLabel: 'Fecha y Responsable',
+                                    sComponent: 'FormSelect',
+                                    sEndPoint: 'sltMaster/3',
+                                    nCol: 12
+                                },
+                            ]
+                        },
+                        {
+                            sHeader: "Tolerancia cero visceras",
+                            sEndPoint: "zeroGutsTolerance",
+                            sFormatName: "Tolerancia cero visceras",
+                            aComponents: [
+                                {
+                                    sName: 'id_master',
+                                    sLabel: 'Fecha y Responsable',
+                                    sComponent: 'FormSelect',
+                                    sEndPoint: 'sltMaster/4',
+                                    nCol: 12
+                                },
+                            ]
+                        },
+                        {
+                            sHeader: "Inspección Cero Tolerancia",
+                            sEndPoint: "zeroToleranceInspection",
+                            sFormatName: "Inspección Cero Tolerancia",
+                            aComponents: [
+                                {
+                                    sName: 'id_master',
+                                    sLabel: 'Fecha y Responsable',
+                                    sComponent: 'FormSelect',
+                                    sEndPoint: 'sltMaster/5',
+                                    nCol: 12
+                                },
+                            ]
+                        },
+                    ]
+                },
+                {
+                    sVariant: 'secondary',
+                    aCards: [
+                        {
+                            sHeader: "Acondicionamiento de la Canal",
+                            sEndPoint: "channelConditioning",
+                            sFormatName: "Acondicionamiento de la Canal",
+                            aComponents: [
+                                {
+                                    sName: 'id_master',
+                                    sLabel: 'Fecha y Responsable',
+                                    sComponent: 'FormSelect',
+                                    sEndPoint: 'sltMaster/6',
+                                    nCol: 12
+                                },
+                            ]
+                        },
+                        {
+                            sHeader: "Despacho Visceras",
+                            sEndPoint: "visceraDispatch",
+                            sFormatName: "Despacho Visceras",
+                            aComponents: [
+                                {
+                                    sName: 'id_master',
+                                    sLabel: 'Fecha y Responsable',
+                                    sComponent: 'FormSelect',
+                                    sEndPoint: 'sltMaster/7',
+                                    nCol: 12
+                                },
+                            ]
+                        },
+                        {
+                            sHeader: "Comparación Decomisos",
+                            sEndPoint: "seizureComparison",
+                            sFormatName: "Comparación Decomisos",
+                            aComponents: [
+                                {
+                                    sName: 'id_master',
+                                    sLabel: 'Fecha y Responsable',
+                                    sComponent: 'FormSelect',
+                                    sEndPoint: 'sltMaster/8',
+                                    nCol: 12
+                                },
+                            ]
+                        },
+                    ]
+                },
+            ]
         }
     },
-    methods:{
+    methods: {
         ...mapMutations(['loadSessionUser']),
     },
     mounted() {
@@ -39,5 +225,7 @@ export default {
 }
 </script>
 <style>
-.link{color: #007bff;}
+.link {
+    color: #007bff;
+}
 </style>

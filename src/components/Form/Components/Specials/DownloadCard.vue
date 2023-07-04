@@ -1,18 +1,28 @@
 <template>
     <b-card 
+        :border-variant="sVariant"
+        :header="sHeader"
+        :header-bg-variant="sVariant"
+        header-text-variant="white"
+        align="center"
         @click="onShowModal"
         style="cursor:pointer;" 
-        bg-variant="success" 
-        text-variant="white" 
-        :header="sHeader" 
-        class="text-center">
-        <b-card-text style="display:flex; justify-content: center;">Descargar Formato <span class="material-icons-sharp ml-2"> {{ '\ue2c0' }}</span></b-card-text>
+        class="text-center"
+    >
+        <b-card-text 
+            text-variant="white" 
+            style="display:flex; justify-content: center;"
+        >Descargar Formato <span class="material-icons-sharp ml-2"> {{ '\ue2c0' }}</span></b-card-text>
     </b-card>
 </template>
 <script>
 export default {
     name: 'DownloadCard',
     props: {
+        sVariant: {
+            type: String,
+            default: 'success'
+        },
         sHeader: {
             type: String,
             default: ''

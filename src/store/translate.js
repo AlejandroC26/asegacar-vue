@@ -1,6 +1,7 @@
 let translations = {
     // USERS
     fullname: "Nombres",
+    charge: "Cargo",
     document: "Documento",
     adress: "Dirección",
     phone: "Teléfono",

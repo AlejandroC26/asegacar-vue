@@ -39,10 +39,6 @@ const menu = [
                 icon: '\ue873'
             },
             { 
-                name: 'contratodeposito',
-                text: 'Contrato Depósito',
-            },
-            { 
                 name: 'planilladiaria',
                 text: 'Planilla Diaria',
             },
@@ -75,6 +71,14 @@ const menu = [
             { 
                 name: 'toleranciacerovisceras',
                 text: 'Tolerancia Cero Visceras',
+            },
+            { 
+                name: 'inspeccioncerotolerancia',
+                text: 'Inspección Cero Tolerancia',
+            },
+            { 
+                name: 'acondicionamientodelacanal',
+                text: 'Acondicionamiento De La Canal',
             },
             { 
                 name: 'despachovisceras',
