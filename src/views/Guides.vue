@@ -34,7 +34,14 @@ export default {
                     sLabel: 'No Guía',
                     sComponent: 'FormText',
                     sEndPoint: '',
-                    nCol: 12
+                    nCol: 8
+                },
+                {
+                    sName: 'no_animals',
+                    sLabel: '# Animales',
+                    sComponent: 'FormNumber',
+                    sEndPoint: '',
+                    nCol: 4
                 },
                 {
                     sName: 'date_entry',

@@ -10,7 +10,6 @@ let translations = {
     created_at : "Fecha",
     person: "Persona",
     expedition_city: "Ciudad Expedición",
-
     // PURPOSES
     name: "Nombre",
     // AGES
@@ -20,6 +19,7 @@ let translations = {
     description: "Descripción",
     // INCOMES
     guide_number: "No Guía",
+    no_animals: '# Animales',
     total_males: "Total Machos",
     total_females: "Total Hembras",
     date_entry: "Fecha Ingreso",
@@ -70,7 +70,7 @@ let translations = {
     supervised_by: 'Supervisado',
     elaborated_by: 'Elaborado',
     species: 'Especie',
-
+    
     small_ints: 'Ints. Delgado',
     large_ints: 'Ints. Grueso',
     liver: 'Hígado',
