@@ -14,7 +14,7 @@
 <script>
 import { mapMutations, mapState } from 'vuex';
 import Aside from '../components/Aside.vue';
-import DefaultGrid from '../components/Grid/Grid.vue';
+import DefaultGrid from '../components/Grid/GridFormData.vue';
 import Right from '../components/Right.vue';
 
 export default {
@@ -62,6 +62,20 @@ export default {
                     sLabel: 'Teléfono',
                     sComponent: 'FormText',
                     sEndPoint: '',
+                    nCol: 12
+                },
+                {
+                    sName: 'signature',
+                    sLabel: 'Firma',
+                    sComponent: 'FormFileImage',
+                    sEndPoint: 'signature',
+                    nCol: 12
+                },
+                {
+                    sName: 'authorization',
+                    sLabel: 'Autorización',
+                    sComponent: 'FormFile',
+                    sEndPoint: 'authorization',
                     nCol: 12
                 },
             ]

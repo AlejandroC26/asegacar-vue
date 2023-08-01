@@ -40,8 +40,20 @@ export default {
                     sName: 'no_animals',
                     sLabel: '# Animales',
                     sComponent: 'FormNumber',
-                    sEndPoint: '',
                     nCol: 4
+                },
+                {
+                    sName: 'consecutive',
+                    sLabel: 'Consecutivo',
+                    sComponent: 'FormText',
+                    nCol: 6
+                },
+                {
+                    sName: 'id_specie',
+                    sLabel: 'Especie',
+                    sComponent: 'FormSelect',
+                    sEndPoint: 'sltSpecies',
+                    nCol: 6
                 },
                 {
                     sName: 'date_entry',
@@ -88,6 +100,12 @@ export default {
                     sLabel: 'Destino',
                     sComponent: 'FormDepartmentCity',
                     sEndPoint: { field: 'id_department_destination' },
+                    nCol: 12
+                },
+                {
+                    sName: 'file_attached',
+                    sLabel: 'Archivo',
+                    sComponent: 'FormFile',
                     nCol: 12
                 },
                 {

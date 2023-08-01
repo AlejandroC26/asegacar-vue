@@ -5,24 +5,34 @@
         </div>
         <div class="col-md-6">
             <label>Departamento</label>
-            <b-form-select
-                v-model="sDepartment"
+            <Multiselect 
+                v-model="sDepartment" 
                 :options="aDepartmentOptions"
-            />
+                track-by="value"
+                label="text"
+                :close-on-select="true"
+            ></Multiselect>
         </div>
         <div class="col-md-6">
             <label>Ciudad</label>
-            <b-form-select
-                v-model="valor"
+            <Multiselect 
+                v-model="valor" 
                 :options="aCityOptions"
-            />
+                track-by="value"
+                label="text"
+                :close-on-select="true"
+            ></Multiselect>
         </div>
     </div>
 </template>
 <script>
 import axiosServices from '../../../../store/axiosServices';
+import Multiselect from 'vue-multiselect'
 export default {
     name: 'FormDepartmentCity',
+    components: {
+        Multiselect
+    },
     props: {
         value: {},
         oValorField: {},
@@ -50,37 +60,38 @@ export default {
     methods: {
         async onGetItems() {
             this.loadSelect = true;
-            axiosServices.onAxiosGet('sltDepartments').then(aItems => {
-                let aNewOptions = [];
-                aItems.data.forEach(oItem => {
-                    let sText = oItem.name;
-                    aNewOptions = [...aNewOptions, { value: oItem.id, text: sText, cities: oItem.cities }]
-                });
-                this.aDepartmentOptions = aNewOptions;
-                this.loadSelect = false;
-                if(Object.entries(this.oValorField).length > 0) {
-                    this.sDepartment = this.oValorField[`${this.sEndPoint.field}`];
-                }
-            })
+            const aItems = await axiosServices.onAxiosGet('sltDepartments');
+            let aNewOptions = [];
+            aItems.data.forEach(oItem => {
+                let sText = oItem.name;
+                aNewOptions = [...aNewOptions, { value: oItem.id, text: sText, cities: oItem.cities }]
+            });
+            this.aDepartmentOptions = aNewOptions;
+            this.loadSelect = false;
+            if(Object.entries(this.oValorField).length > 0) {
+                this.sDepartment = aNewOptions.find(option => option.value == this.oValorField[`${this.sEndPoint.field}`]);
+            }
         },
     },
     watch: {
         valor(newValor) {
-            this.$emit('updateValor', newValor)
+            this.$emit('updateValor', newValor?.value)
         },
         value(newValue) {
             this.valor = newValue; 
         },
-        oValorField(newValorField) {
-            this.valor = newValorField[`${this.sKeyField}`]
-        },
         sDepartment(newDepartment) {
-            const aDepartment = this.aDepartmentOptions.find(oDepartment => oDepartment.value === newDepartment);
-            let aCities = [];
-            aDepartment.cities.forEach(city => {
-                aCities = [...aCities, { value: city.id, text: city.name }]
-            });
-            this.aCityOptions = aCities;
+            const aDepartment = this.aDepartmentOptions.find(oDepartment => oDepartment.value === newDepartment.value);
+            this.aCityOptions = aDepartment?.cities.map(city => {
+                return { value: city.id, text: city.name }
+            })
+        },
+        aCityOptions: {
+            handler(newCities) {
+                if(Object.entries(this.oValorField).length) {
+                    this.valor = newCities.find(citie => citie.value === this.oValorField[`${this.sKeyField}`])
+                }
+            }
         }
     }
 }

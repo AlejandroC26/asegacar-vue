@@ -37,14 +37,24 @@
 </template>
 <script>
 import FormText from "./Components/FormText.vue";
+import FormState from "./Components/FormState.vue";
+import FormStateSiNo from "./Components/FormStateSiNo.vue";
+import FormArea from "./Components/FormArea.vue";
 import FormNumber from "./Components/FormNumber.vue";
 import FormPassword from "./Components/FormPassword.vue";
+import FormMultiSelect from "./Components/FormMultiSelect.vue";
 import FormSelect from "./Components/FormSelect.vue";
 import FormDate from "./Components/FormDate.vue";
 import FormTime from "./Components/FormTime.vue";
+import FormFile from "./Components/FormFile.vue";
 import FormFileImage from "./Components/FormFileImage.vue";
 import FormLocalSelect from "./Components/FormLocalSelect.vue";
+import FormDualSelect from "./Components/FormDualSelect.vue";
+import FormOptionalDate from "./Components/Specials/FormOptionalDate.vue";
+import FormDepartmentCity from "./Components/Specials/FormDepartmentCity.vue";
+
 import axiosServices from '../../store/axiosServices';
+
 export default {
   name: "FormularioView",
   props: {
@@ -75,13 +85,21 @@ export default {
   },
   components: {
     FormText,
+    FormArea,
+    FormState,
+    FormStateSiNo,
     FormNumber,
     FormPassword,
     FormSelect,
+    FormMultiSelect,
     FormDate,
     FormTime,
+    FormFile,
     FormFileImage,
-    FormLocalSelect
+    FormLocalSelect,
+    FormDepartmentCity,
+    FormOptionalDate,
+    FormDualSelect
   },
   data() {
     return {
@@ -118,7 +136,7 @@ export default {
         if(response.data.status === 'Error') {
           return console.log(response.data.errors)
         } else {
-          if(response.status === 200) {
+          if(response.data.status === 'Success') {
             //alert('registro exitoso');
             this.$emit('saveOK', true);
           } else {
@@ -138,7 +156,7 @@ export default {
         }
       }
       axiosServices.onAxiosPostWithfile(`${this.sEndPoint}/${this.nIdItem}?_method=PUT`, formData).then(response => {
-        if(response.status === 200) {
+        if(response.data.status === 'Success') {
           //alert('actualizacion exitosa');
           this.$emit('saveOK', true);
         } else {

@@ -1,0 +1,32 @@
+.multiselect {
+    min-height: auto;
+}
+.multiselect__select {
+    height: 32px;
+}
+
+
+.form-control, .multiselect__tags, .custom-select {
+    min-height: 37px;
+}
+
+.multiselect__input, .multiselect__single {
+    background: none;
+    font-size: 1rem;
+    margin-top: .1rem;
+    margin-bottom: 0;
+}
+
+.multiselect__option {
+    font-size: 1rem;
+}
+.multiselect__tags {
+    border: 1px solid #ced4da;
+    padding: 0.375rem 0.75rem;
+    .multiselect__single {
+        margin-bottom: 0;
+    }
+    .multiselect__placeholder {
+        margin-bottom: 0;
+    }
+}

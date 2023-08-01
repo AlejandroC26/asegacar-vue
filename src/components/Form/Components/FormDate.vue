@@ -1,6 +1,6 @@
 <template>
     <div class="mb-2">
-        <label>{{ sLabel }}</label>
+        <label v-if="!bHideLabel">{{ sLabel }}</label>
         <b-form-datepicker 
             v-model="valor" 
         />
@@ -12,6 +12,10 @@ export default {
     props: {
         value: {},
         oValorField: {},
+        bHideLabel: {
+            type: Boolean,
+            default: false
+        },
         sKeyField: {
             type: String,
             default: ''

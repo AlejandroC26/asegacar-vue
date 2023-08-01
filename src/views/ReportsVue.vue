@@ -36,7 +36,7 @@ export default {
                                     sName: 'id_master',
                                     sLabel: 'Fecha y Responsable',
                                     sComponent: 'FormSelect',
-                                    sEndPoint: 'sltMaster/1',
+                                    sEndPoint: 'sltDailyPayrolls',
                                     nCol: 12
                                 },
                             ]

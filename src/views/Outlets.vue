@@ -6,9 +6,6 @@
                 :sTitle="sTitle"
                 :aComponents="aFields"
                 :sEndPoint="sEndPoint"
-                :bDisableRegister="true"
-                :bDisableDelete="true"
-                :bDisableUpdate="true"
             />            
         </main>
         <Right/>
@@ -33,10 +30,40 @@ export default {
             sEndPoint: 'outlets',
             aFields: [
                 {
-                    sName: 'description',
-                    sLabel: 'Descripción',
+                    sName: 'code',
+                    sLabel: 'Código',
                     sComponent: 'FormText',
-                    nCol: 12
+                    nCol: 4
+                },
+                {
+                    sName: 'customer',
+                    sLabel: 'Cliente',
+                    sComponent: 'FormText',
+                    nCol: 8
+                },
+                {
+                    sName: 'primary_phone',
+                    sLabel: 'Teléfono Principal',
+                    sComponent: 'FormText',
+                    nCol: 6
+                },
+                {
+                    sName: 'secondary_phone',
+                    sLabel: 'Teléfono Secundario',
+                    sComponent: 'FormText',
+                    nCol: 6
+                },
+                {
+                    sName: 'establishment_name',
+                    sLabel: 'Nombre Establecimiento',
+                    sComponent: 'FormText',
+                    nCol: 6
+                },
+                {
+                    sName: 'establishment_address',
+                    sLabel: 'Dirección Establecimiento',
+                    sComponent: 'FormText',
+                    nCol: 6
                 },
             ]
         }

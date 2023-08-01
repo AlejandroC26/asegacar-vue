@@ -51,7 +51,7 @@
               <b-button-group>
                 <b-button size="sm" variant="none" v-if="!bDisableUpdate" @click="onShowModal('edit', data.item.id)"><b-icon icon="pencil-fill"/></b-button>
                 <b-button size="sm" variant="none" v-if="!bDisableDelete" @click="onDelete(data.item.id)"><b-icon icon="trash-fill"/></b-button>
-                <b-button size="sm" variant="none" @click="onDownloadPDF(data.item.id)"><b-icon icon="file-pdf-fill"/></b-button>
+                <b-button size="sm" variant="none" @click="onShowDownload(data.item.id)"><b-icon icon="cloud-download"/></b-button>
               </b-button-group>
             </template>
           </b-table>
@@ -78,12 +78,28 @@
       @close="onClose"
       @saveOK="onReloadItems"
     />
+    <b-modal 
+      title="Descargar Formato" 
+      size="lg"
+      v-model="bShowDownload" 
+      body-bg-variant="bg-light"
+      hide-footer
+      @hidden="onClose">
+      <b-row>
+        <b-col lg="6">
+          <b-button variant="danger" class="w-100" @click="onDownloadPDF()">Contrato <b-icon icon="file-pdf-fill"/></b-button>
+        </b-col>
+        <b-col lg="6">
+          <b-button variant="primary" class="w-100" @click="onDownloadGuide()">Guía <b-icon icon="file-pdf-fill"/></b-button>
+        </b-col>
+      </b-row>
+    </b-modal>
   </div>
 </template>
 <script>
 import translate from "../../store/translate.js"
 import axiosServices from "../../store/axiosServices";
-import Formulario from "../Form/Formulario.vue";
+import Formulario from "../Form/FormularioFormData.vue";
 export default {
   name: "GridView",
   components: {
@@ -116,6 +132,7 @@ export default {
     return {
       nKey: 0,
       bShowModal: false,
+      bShowDownload: false,
       sAction: "",
       perPage: 5,
       pageOptions: [5, 10, 15, { value: 100, text: "Show a lot" }],
@@ -190,14 +207,38 @@ export default {
         }
       })
     },
-    async onDownloadPDF(nIdItem) {
-      const response = await axiosServices.onAxiosPostToFile(`contractPDF/${nIdItem}`);
+    async onDownloadPDF() {
+      const response = await axiosServices.onAxiosPostToFile(`contractPDF/${this.nIdItemEdit}`);
       const url = window.URL.createObjectURL(new Blob([response.data]));
       const link = document.createElement('a');
       link.href = url;
       link.setAttribute('download', 'Contrato-deposito-animales.pdf');
       document.body.appendChild(link);
       link.click();
+      this.onClose();
+    },
+    async onDownloadGuide() {
+      const response = await axiosServices.onAxiosPostToFile(`guidePDF/${this.nIdItemEdit}`);
+      if(response.status === 200) {
+        const url = window.URL.createObjectURL(new Blob([response.data]));
+        const link = document.createElement('a');
+        link.href = url;
+        link.setAttribute('download', 'Guia.pdf');
+        document.body.appendChild(link);
+        link.click();
+        this.onClose();
+      } else {
+        const Toast = this.$swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 2500,
+        })
+        Toast.fire({
+          icon: 'error',
+          title: 'Esta guía no tiene archivo asginado',
+        })
+      }
     },
     onReloadItems() {
       this.onClose();
@@ -213,8 +254,13 @@ export default {
       }
       this.bShowModal = true;
     },
+    onShowDownload(nIdItem) {
+      this.nIdItemEdit = nIdItem;
+      this.bShowDownload = true;
+    },
     onClose() {
       this.bShowModal = false;
+      this.bShowDownload = false;
     },
   },
   computed: {

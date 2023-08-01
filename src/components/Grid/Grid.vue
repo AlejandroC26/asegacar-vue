@@ -67,6 +67,7 @@
     </div>
     <Formulario
       v-model="bShowModal"
+      :sFormSize="sFormSize"
       :key="nKey"
       :sEndPoint="sEndPoint"
       :sTitle="sTitle"
@@ -94,6 +95,10 @@ export default {
       default: "",
     },
     sEndPoint: {
+      type: String,
+      default: "",
+    },
+    sFormSize: {
       type: String,
       default: "",
     },

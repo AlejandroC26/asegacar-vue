@@ -24,7 +24,7 @@ export default {
         Multiselect
     },
     props: {
-        value: false,
+        value: {},
         oValorField: {},
         sKeyField: {
             type: String,

@@ -2,18 +2,16 @@
     <div class="mb-2">
         <label>{{ sLabel }} <span class="text-caption text-weight-light">({{ oAccept }})</span></label>
         <b-form-file 
-            accept="image/jpeg, image/png, image/jpg" 
+            accept="application/pdf" 
             v-model="valor"
         />
-        <div class="preview" v-if="bLoadedPreview">
-            <img :src="sUrlPreview" alt="preview" />
-        </div>
+        <b-button v-if="bHaveFile" @click="onDownloadFile()" class="w-100 mt-2" variant="danger">Descargar Formato</b-button>
     </div>
 </template>
 <script>
 import axiosServices from '../../../store/axiosServices';
 export default {
-    name: 'FormFileImage',
+    name: 'FormFile',
     props: {
         value: {},
         oValorField: {},
@@ -33,9 +31,22 @@ export default {
     data() {
         return {
             valor: [],
-            bLoadedPreview: false,
-            sUrlPreview: "",
-            oAccept: ".png, .jpg, .jpeg",
+            bHaveFile: false,
+            oAccept: ".pdf",
+        }
+    },
+    methods: {
+        async onDownloadFile() {
+            const response = await axiosServices.onAxiosGet(`/${this.sEndPoint}/${this.oValorField.id}`);
+            console.log(response)
+            let fURL = window.URL.createObjectURL(response.data);
+            let fLink = document.createElement('a');
+
+            fLink.href = fURL;
+            fLink.setAttribute('download', `${this.sLabel}.pdf`);
+            document.body.appendChild(fLink);
+
+            fLink.click();
         }
     },
     watch: {
@@ -47,9 +58,7 @@ export default {
         },
         async oValorField(newValorField) {
             if(Object.keys(newValorField).length !== 0) {
-                const response = await axiosServices.onAxiosGet(`/${this.sEndPoint}/${newValorField.id}`)
-                this.sUrlPreview = response.data.data;
-                this.bLoadedPreview = true;
+                this.bHaveFile = true;
             } 
         }
     }

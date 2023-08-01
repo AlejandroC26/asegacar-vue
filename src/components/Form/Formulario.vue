@@ -1,14 +1,14 @@
 <template>
   <b-modal 
     :title="sTitle" 
-    size="lg"
+    :size="sFormSize"
     v-model="valor" 
     body-bg-variant="bg-light"
     hide-footer
     @hidden="onClose">
     <b-row class="gap">
         <b-col
-          v-for="(oComponent, key) in aComponents"
+          v-for="(oComponent, key) in aChangeComponents"
           :lg="oComponent.nCol"
           :key="key"
         >
@@ -19,6 +19,7 @@
             :sEndPoint="oComponent.sEndPoint" 
             :sKeyField="oComponent.sName"
             :options="oComponent.options"
+            :aSubComponents="oComponent.aSubComponents"
             :oValorField="oValorField"
             @updateValor="onGetValuesForm(oComponent.sName, $event)"
           />
@@ -46,11 +47,13 @@ import FormMultiSelect from "./Components/FormMultiSelect.vue";
 import FormSelect from "./Components/FormSelect.vue";
 import FormDate from "./Components/FormDate.vue";
 import FormTime from "./Components/FormTime.vue";
+import FormFile from "./Components/FormFile.vue";
 import FormFileImage from "./Components/FormFileImage.vue";
 import FormLocalSelect from "./Components/FormLocalSelect.vue";
 import FormDualSelect from "./Components/FormDualSelect.vue";
 import FormOptionalDate from "./Components/Specials/FormOptionalDate.vue";
 import FormDepartmentCity from "./Components/Specials/FormDepartmentCity.vue";
+import DailyPayrollTable from "./Components/Specials/DailyPayrollTable.vue";
 
 import axiosServices from '../../store/axiosServices';
 
@@ -60,6 +63,10 @@ export default {
     sTitle: {
       type: String,
       default: "",
+    },
+    sFormSize: {
+      type: String,
+      default: "lg",
     },
     value: {
       type: Boolean,
@@ -93,11 +100,13 @@ export default {
     FormMultiSelect,
     FormDate,
     FormTime,
+    FormFile,
     FormFileImage,
     FormLocalSelect,
     FormDepartmentCity,
     FormOptionalDate,
-    FormDualSelect
+    FormDualSelect,
+    DailyPayrollTable
   },
   data() {
     return {
@@ -105,17 +114,17 @@ export default {
       bShow: false,
       oFormField: {},
       oValorField: {},
+      aChangeComponents: JSON.parse(JSON.stringify(this.aComponents)),
     };
   },
   mounted(){
     this.onGetDataForm();
   },
   methods: {
-    onGetDataForm() {
+    async onGetDataForm() {
       if(this.bCreate === false && this.nIdItem) {
-        axiosServices.onAxiosGet(`${this.sEndPoint}/${this.nIdItem}`).then(response => {
-          this.oValorField = response.data.data;
-        })
+        const response = await axiosServices.onAxiosGet(`${this.sEndPoint}/${this.nIdItem}`)
+        this.oValorField = response.data.data;
       } 
     },
     onClose() {
@@ -123,11 +132,12 @@ export default {
     },
     onSaveForm() {
       axiosServices.onAxiosPost(this.sEndPoint, this.oFormField).then(response => {
-        if(response.data.status === 'Error') {
+        if(response?.data.status === 'Error') {
           return console.log(response.data.errors)
         } else {
           if(response.data.status === 'Success') {
             //alert('registro exitoso');
+            console.log(response.data)
             this.$emit('saveOK', true);
           } else {
             console.log(response)
@@ -152,7 +162,11 @@ export default {
       if(data && data.size) {
         this.oFormField[index] = data;
       } else {
-        this.oFormField[index] = data
+        this.oFormField[index] = (Array.isArray(data)) ? data : (typeof data == 'object') ? data.id : data
+      }
+      const oDepends = this.aChangeComponents.findIndex(component => component.sDependsOn === index);
+      if(oDepends >= 0) {
+        this.aChangeComponents[oDepends].sEndPoint = `${this.aComponents[oDepends].sEndPoint}/${data}`;
       }
     },
   },

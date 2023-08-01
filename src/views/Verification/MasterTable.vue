@@ -66,18 +66,11 @@ export default {
                     nCol: 6
                 },
                 {
-                    sName: 'species',
-                    sLabel: 'Especie (opcional)',
-                    sComponent: 'FormText',
-                    nCol: 6
-                },
-
-                {
                     sName: 'id_master_type',
                     sLabel: 'Tipo',
                     sComponent: 'FormSelect',
                     sEndPoint: 'sltMasterType',
-                    nCol: 12
+                    nCol: 6
                 }
             ]
         }

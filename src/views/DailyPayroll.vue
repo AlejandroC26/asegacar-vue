@@ -6,6 +6,7 @@
                 :sTitle="sTitle"
                 :aComponents="aFields"
                 :sEndPoint="sEndPoint"
+                :sFormSize="sFormSize"
             />            
         </main>
         <Right/>
@@ -28,47 +29,58 @@ export default {
         return {
             sTitle: 'Planilla diaria',
             sEndPoint: 'dailyPayroll',
+            sFormSize: 'xl',
             aFields: [
                 {
-                    sName: 'id_master',
-                    sLabel: 'Fecha y Responsable',
-                    sComponent: 'FormSelect',
-                    sEndPoint: 'sltMaster/1',
-                    nCol: 6
-                },
-                {
-                    sName: 'id_outlet',
-                    sLabel: 'Expendio',
-                    sComponent: 'FormSelect',
-                    sEndPoint: 'sltOutlets',
-                    nCol: 6
-                },
-                {
-                    sName: 'benefit_date',
-                    sLabel: 'Fecha de beneficio',
+                    sName: 'date',
+                    sLabel: 'Fecha',
                     sComponent: 'FormDate',
-                    sVisible: 'edit',
-                    nCol: 12
-                },
-                {
-                    sName: 'id_color',
-                    sLabel: 'Color',
-                    sComponent: 'FormSelect',
-                    sEndPoint: 'colors',
                     nCol: 6
                 },
                 {
-                    sName: 'id_gender',
-                    sLabel: 'Sexo',
+                    sName: 'id_responsable',
+                    sLabel: 'Responsable',
                     sComponent: 'FormSelect',
-                    sEndPoint: 'genders',
+                    sEndPoint: 'sltPersons',
                     nCol: 6
                 },
+
                 {
-                    sName: 'amount',
-                    sLabel: 'Cantidad',
-                    sComponent: 'FormNumber',
+                    sName: 'id_guide',
+                    sLabel: 'Guía',
+                    sComponent: 'FormSelect',
+                    sEndPoint: 'sltGuides',
                     nCol: 12
+                },
+                {
+                    sName: 'entries',
+                    sComponent: 'DailyPayrollTable',
+                    sEndPoint: 'guides',
+                    sDependsOn: 'id_guide',
+                    nCol: 12,
+                    aSubComponents: [
+                        {
+                            sName: 'id_outlet',
+                            sLabel: 'Expendio',
+                            sComponent: 'FormSelect',
+                            sEndPoint: 'sltOutlets',
+                            nCol: 3
+                        },
+                        {
+                            sName: 'id_color',
+                            sLabel: 'Color',
+                            sComponent: 'FormSelect',
+                            sEndPoint: 'colors',
+                            nCol: 3
+                        },
+                        {
+                            sName: 'id_gender',
+                            sLabel: 'Sexo',
+                            sComponent: 'FormSelect',
+                            sEndPoint: 'genders',
+                            nCol: 3
+                        },
+                    ],
                 },
                 {
                     sName: 'special_order',

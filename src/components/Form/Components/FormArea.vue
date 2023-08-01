@@ -1,6 +1,6 @@
 <template>
     <div>
-        <label>{{ sLabel }}</label>
+        <label  v-if="!bHideLabel">{{ sLabel }}</label>
         <b-form-textarea
             v-model="valor"
         ></b-form-textarea>
@@ -12,6 +12,10 @@ export default {
     props: {
         value: {},
         oValorField: {},
+        bHideLabel: {
+            type: Boolean,
+            default: false
+        },
         sKeyField: {
             type: String,
             default: ''
