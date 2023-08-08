@@ -31,7 +31,7 @@ export default {
             sTitle: 'Registro Diario Antemortem',
             sEndPoint: 'antemortemDailyRecord',
             sFormatName: 'For-bovinos-plantilla-diaria',
-            sFormSize: 'xl',
+            sFormSize: 'xxl',
             aFields: [
                 {
                     sName: 'id_guide',
@@ -48,9 +48,23 @@ export default {
                     nCol: 12,
                     aSubComponents: [
                         {
+                            sName: 'id_outlet',
+                            sLabel: 'N° Expendio',
+                            sComponent: 'FormSelect',
+                            sEndPoint: 'sltOutlets',
+                            nCol: 12
+                        },
+                        {
                             sName: 'code',
                             sLabel: 'Código Asignado',
                             sComponent: 'FormText',
+                            nCol: 6
+                        },
+                        {
+                            sName: 'id_color',
+                            sLabel: 'Color',
+                            sComponent: 'FormSelect',
+                            sEndPoint: 'colors',
                             nCol: 6
                         },
                         {
@@ -68,13 +82,6 @@ export default {
                             nCol: 6
                         },
                         {
-                            sName: 'id_color',
-                            sLabel: 'Color',
-                            sComponent: 'FormSelect',
-                            sEndPoint: 'colors',
-                            nCol: 6
-                        },
-                        {
                             sName: 'id_purpose',
                             sLabel: 'Propósito',
                             sComponent: 'FormSelect',
@@ -82,18 +89,17 @@ export default {
                             nCol: 6
                         },
                         {
-                            sName: 'id_outlet',
-                            sLabel: 'N° Expendio',
-                            sComponent: 'FormSelect',
-                            sEndPoint: 'sltOutlets',
-                            nCol: 12
-                        },
-                        {
                             sName: 'sacrifice_date',
                             sLabel: 'Fecha de sacrificio',
                             sComponent: 'FormDate',
                             nCol: 12
                         },
+                        {
+                            sName: 'special_order',
+                            sLabel: 'Orden Especial',
+                            sComponent: 'FormArea',
+                            nCol: 12
+                        }
                     ]
                 }
             ],

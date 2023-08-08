@@ -30,6 +30,11 @@ export default {
             valor: ''
         }
     },
+    mounted() {
+        if(this.oValorField && Object.values(this.oValorField).length) {
+            this.valor = this.oValorField[`${this.sKeyField}`]
+        }
+    },
     watch: {
         valor(newValor) {
             this.$emit('updateValor', newValor)
@@ -43,3 +48,10 @@ export default {
     }
 }
 </script>
+<style>
+.b-form-btn-label-control.form-control > .form-control {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+</style>

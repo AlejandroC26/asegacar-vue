@@ -37,6 +37,9 @@ export default {
             type: String,
             default: ''
         },
+        aOptions: {
+            type: Array,
+        }
     },
     data() {
         return {
@@ -49,25 +52,17 @@ export default {
         this.onGetItems();
     },
     methods: {
-        secondsDiff(fecha1, fecha2) {
-            // Convertir las fechas a objetos Date
-            const date1 = new Date(fecha1);
-            const date2 = new Date(fecha2);
-            const diferencia = Math.abs(date2 - date1);
-            const diferenciaSegundos = diferencia / 1000;
-            return diferenciaSegundos;
-        },
         async onGetItems() {
             this.loadSelect = true;
-            if(localStorage.getItem(this.sEndPoint)) {
-                const localStorageData = JSON.parse(localStorage.getItem(this.sEndPoint));
-                if(this.secondsDiff(localStorageData.date, new Date()) < 30) {
-                    return this.options = localStorageData.data;
-                }
-            }
-            const aItems = await axiosServices.onAxiosGet(`${this.sEndPoint}`)
             let aNewOptions = [ { value: "", text: "..." } ];
-            aItems.data.forEach(oItem => {
+            let options = [];
+            if(!this.aOptions) {
+                const aItems = await axiosServices.onAxiosGet(`${this.sEndPoint}`)
+                options = aItems.data;
+            } else {
+                options = this.aOptions;
+            }
+            options.forEach(oItem => {
                 let sText = '';
                 if(oItem.hasOwnProperty('name')) {
                     sText = oItem.name;
@@ -80,11 +75,6 @@ export default {
             });
             this.options = aNewOptions;
             this.loadSelect = false;
-            const parsed = JSON.stringify({
-                date: (new Date()), 
-                data: aNewOptions
-            });
-            localStorage.setItem(this.sEndPoint, parsed);
         },
     },
     watch: {

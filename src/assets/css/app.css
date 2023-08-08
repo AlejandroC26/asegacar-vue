@@ -32,6 +32,17 @@
     --box-shadow: 0 2rem 3rem var(--color-light)
 }
 
+.modal-xxl {
+    width: 95%;
+    max-width: 900px;
+}
+
+@media (min-width: 576px) {
+    .modal-xxl {
+        max-width: 1420px;
+    }
+}
+
 *{
     margin: 0;
     padding: 0;

@@ -1,26 +1,30 @@
 <template>
-<div class="form-table" :style="`--cols: ${aSubComponents.length}`" v-show="nAnimals">
-    <div class="header">
-        <div v-for="oComponent in aSubComponents">{{ oComponent.sLabel }}</div>
-    </div>
-    <div class="table-row" v-for="row in nAnimals" :key="row">
-        <div
-            v-for="(oComponent) in aSubComponents"
-            :sm="oComponent.nCol"
-        >
-            <component 
-                :bHideLabel="true"
-                :is="oComponent.sComponent" 
-                :sLabel="oComponent.sLabel"
-                :sEndPoint="oComponent.sEndPoint" 
-                :sKeyField="oComponent.sName"
-                :options="oComponent.options"
-                :oValorField="aValorFields[row-1]"
-                @updateValor="onGetValuesForm(oComponent.sName, $event, row-1)"
-            />
+    <div>
+        <div class="d-flex justify-content-center mb-3 mt-3" v-if="bLoading">
+            <b-spinner label="Loading..."></b-spinner>
+        </div>
+        <div class="form-table" :style="`--cols: ${aSubComponents.length}`" v-show="nAnimals">
+            <div class="header">
+                <div v-for="oComponent in aSubComponents">{{ oComponent.sLabel }}</div>
+            </div>
+            <div class="table-row" v-for="row in nAnimals" :key="row">
+                <div
+                    v-for="(oComponent) in aEditedComponents"
+                    :sm="oComponent.nCol"
+                >
+                    <component 
+                        :bHideLabel="true"
+                        :is="oComponent.sComponent" 
+                        :sEndPoint="oComponent.sEndPoint" 
+                        :sKeyField="oComponent.sName"
+                        :aOptions="oComponent.aOptions"
+                        :oValorField="aValorFields[row-1]"
+                        @updateValor="onGetValuesForm(oComponent.sName, $event, row-1)"
+                    />
+                </div>
+            </div>
         </div>
     </div>
-</div>
 </template>
 <script>
 import FormText from "../FormText.vue";
@@ -52,12 +56,47 @@ export default {
     },
     data() {
         return {
+            bLoading: false,
             nAnimals: 0,
             aValorFields: [],
             aLocalFields: [],
+            aEditedComponents: [],
         }
     },
+    mounted() {
+        this.onGetData();
+    },
     methods: {
+        async onGetData() {
+            this.bLoading = true;
+            let aEndPoints = [];
+            aEndPoints = this.aSubComponents.filter(oComponent => oComponent.sEndPoint);
+            aEndPoints = aEndPoints.map(oComponent => {return oComponent.sEndPoint});
+            let axiosData = await this.onSetEndPointsData(aEndPoints);
+            let oEndPoints = {};
+            aEndPoints.forEach((sEndPoint, key) => {
+                oEndPoints[sEndPoint] = axiosData[key];
+            });
+
+            this.aEditedComponents = this.aSubComponents.map(oComponent => {
+                oComponent['aOptions'] = oEndPoints[oComponent.sEndPoint] ?? [];
+                return oComponent;
+            });
+            this.bLoading = false;
+        },
+        async onSetEndPointsData(data) {
+            return new Promise(async (resolve, reject) => { 
+                try {
+                    const axiosData = await Promise.all(data.map(async (element) => {
+                        const response = await axiosServices.onAxiosGet(element);
+                        return response.data;
+                    }));
+                    resolve(axiosData);
+                } catch (error) {
+                    reject(error);
+                }
+            });
+        },
         onGetValuesForm(index, data, row) {
             if(this.aLocalFields[row]) {
                 this.aLocalFields[row][index] = data;
@@ -73,13 +112,11 @@ export default {
             this.aValorFields = newValorField[`${this.sKeyField}`];
         },
         async sEndPoint(sNewEndPoint) {
+            this.nAnimals = 0;
             if(sNewEndPoint.split('/')[1] && sNewEndPoint.split('/')[1] !== 'undefined') {
                 const response = await axiosServices.onAxiosGet(sNewEndPoint);
                 const nAnimals = response.data.data.no_animals;
-                if(nAnimals) {
-                    this.nAnimals = 1;
-                    setTimeout(() => { this.nAnimals = nAnimals; }, 500);
-                }
+                this.nAnimals = nAnimals ?? 0;
             }
         }
     },

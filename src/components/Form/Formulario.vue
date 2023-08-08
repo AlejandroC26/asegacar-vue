@@ -135,7 +135,7 @@ export default {
         if(response?.data.status === 'Error') {
           return console.log(response.data.errors)
         } else {
-          if(response.data.status === 'Success') {
+          if(response?.data.status === 'Success') {
             //alert('registro exitoso');
             console.log(response.data)
             this.$emit('saveOK', true);
