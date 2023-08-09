@@ -20,6 +20,7 @@
             :sKeyField="oComponent.sName"
             :options="oComponent.options"
             :aSubComponents="oComponent.aSubComponents"
+            :bDisabled="oComponent.bDisabled"
             :oValorField="oValorField"
             @updateValor="onGetValuesForm(oComponent.sName, $event)"
           />

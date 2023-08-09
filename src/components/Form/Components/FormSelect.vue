@@ -4,6 +4,7 @@
         <Multiselect 
             v-model="valor" 
             :options="options"
+            :disabled="bDisabled"
             track-by="id"
             label="name"
             :close-on-select="true"
@@ -25,6 +26,10 @@ export default {
             type: Boolean,
             default: false
         },
+        bDisabled: {
+            type: Boolean,
+            default: false
+        },
         sKeyField: {
             type: String,
             default: ''
@@ -39,7 +44,7 @@ export default {
         },
         aOptions: {
             type: Array,
-        }
+        },
     },
     data() {
         return {

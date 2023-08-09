@@ -4,6 +4,7 @@
         <b-form-input
             type="text"
             v-model="valor"
+            :disabled="bDisabled"
         />
     </div>
 </template>
@@ -13,6 +14,10 @@ export default {
     props: {
         value: {},
         oValorField: {},
+        bDisabled: {
+            type: Boolean,
+            default: false
+        },
         bHideLabel: {
             type: Boolean,
             default: false

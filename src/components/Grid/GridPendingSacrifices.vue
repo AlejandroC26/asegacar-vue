@@ -130,30 +130,29 @@
       this.onGetData();
     },
     methods: {
-      onGetData(){
-        axiosServices.onAxiosGet('antemortemDailyRecordPending').then(res => {
-          this.aItems = res.data;
-          if(this.aItems.length > 0) {
-            let fields = [];
-            fields = [...fields, { key: 'actions', label: "", sortable: false }]
-            let aHeaders = Object.keys(res.data[0]);
-            aHeaders.forEach(sValue => {
-              if(!sValue.includes('id_')) {
-                let label = translate.getTranslation(sValue);
-                let thStyle = '';
-                if(label.length > 20) {
-                  thStyle = 'width: 200px; display: inline-block;';
-                }
-                fields = [
-                  ...fields, { key: sValue, label, sortable: false, thStyle }
-                ]
-                
+      async onGetData(){
+        const res = await axiosServices.onAxiosGet('antemortemDailyRecordPending')
+        this.aItems = res.data;
+        if(this.aItems.length > 0) {
+          let fields = [];
+          fields = [...fields, { key: 'actions', label: "", sortable: false }]
+          let aHeaders = Object.keys(res.data[0]);
+          aHeaders.forEach(sValue => {
+            if(!sValue.includes('id_')) {
+              let label = translate.getTranslation(sValue);
+              let thStyle = '';
+              if(label.length > 20) {
+                thStyle = 'width: 200px; display: inline-block;';
               }
-            });
-            this.aFields = fields;
-            this.nKey += 1;
-          }
-        })
+              fields = [
+                ...fields, { key: sValue, label, sortable: false, thStyle }
+              ]
+              
+            }
+          });
+          this.aFields = fields;
+          this.nKey += 1;
+        }
       },
       onDelete(nIdDel) {
         this.$swal({

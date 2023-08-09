@@ -42,10 +42,10 @@ const menu = [
                 name: 'planilladiaria',
                 text: 'Planilla Diaria',
             },
-            { 
-                name: 'registrodiarioantemorten',
-                text: 'Registro Diario Antemortem',
-            },
+            // { 
+            //     name: 'registrodiarioantemorten',
+            //     text: 'Registro Diario Antemortem',
+            // },
             { 
                 name: 'sacrificiospendientes',
                 text: 'Sacrificios Pendientes',

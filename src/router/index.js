@@ -72,12 +72,12 @@ const routes = [
     component: () => import('../views/DailyPayroll'),
     meta: { protectedRoute: true }
   },
-  {
-    path: '/registrodiarioantemorten',
-    name: 'AntemortemDailyRecord',
-    component: () => import('../views/AntemortemDailyRecord'),
-    meta: { protectedRoute: true }
-  },
+  // {
+  //   path: '/registrodiarioantemorten',
+  //   name: 'AntemortemDailyRecord',
+  //   component: () => import('../views/AntemortemDailyRecord'),
+  //   meta: { protectedRoute: true }
+  // },
   {
     path: '/sacrificiospendientes',
     name: 'PendingSacrifices',

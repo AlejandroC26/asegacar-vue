@@ -5,7 +5,6 @@
             <DefaultGrid 
                 :sTitle="sTitle"
                 :aComponents="aFields"
-                :aDownloadComponents="aDownloadFields"
                 :sFormatName="sFormatName"
                 :sEndPoint="sEndPoint"
                 :bDisableRegister="true"
@@ -39,12 +38,14 @@ export default {
                     sLabel: 'N° Guía',
                     sComponent: 'FormSelect',
                     sEndPoint: 'sltGuides',
+                    bDisabled: true,
                     nCol: 6
                 },
                 {
                     sName: 'code',
                     sLabel: 'Código Asignado',
                     sComponent: 'FormText',
+                    bDisabled: true,
                     nCol: 6
                 },
                 {
@@ -52,6 +53,7 @@ export default {
                     sLabel: 'Sexo',
                     sComponent: 'FormSelect',
                     sEndPoint: 'genders',
+                    bDisabled: true,
                     nCol: 6
                 },
                 {
@@ -59,6 +61,7 @@ export default {
                     sLabel: 'Edad',
                     sComponent: 'FormSelect',
                     sEndPoint: 'sltAges',
+                    bDisabled: true,
                     nCol: 6
                 },
                 {
@@ -66,6 +69,7 @@ export default {
                     sLabel: 'Color',
                     sComponent: 'FormSelect',
                     sEndPoint: 'colors',
+                    bDisabled: true,
                     nCol: 6
                 },
                 {
@@ -73,6 +77,7 @@ export default {
                     sLabel: 'Propósito',
                     sComponent: 'FormSelect',
                     sEndPoint: 'sltPurposes',
+                    bDisabled: true,
                     nCol: 6
                 },
                 {
@@ -82,14 +87,6 @@ export default {
                     sEndPoint: 'sltOutlets',
                     nCol: 12
                 },
-                {
-                    sName: 'sacrifice_date',
-                    sLabel: 'Fecha de sacrificio',
-                    sComponent: 'FormOptionalDate',
-                    nCol: 12
-                },
-            ],
-            aDownloadFields: [
                 {
                     sName: 'sacrifice_date',
                     sLabel: 'Fecha de sacrificio',
