@@ -54,19 +54,20 @@ export default {
     },
 
     async onAxiosPostWithfile(sUrl, oBody) {
-        delete oConfigBase.responseType;
-        oConfigBase.headers['Content-Type'] = 'multipart/form-data'; 
-        return oApiClient.post(sUrl, oBody, oConfigBase)
+        const configWithFile = { ...oConfigBase };
+        configWithFile.headers['Content-Type'] = 'multipart/form-data';
+        return oApiClient.post(sUrl, oBody, configWithFile)
     },
     
-
     async onAxiosGetToFile(sUrl) {
-        oConfigBase.responseType = "blob";
-        return oApiClient.get(sUrl, oConfigBase);
+        const configWithFile = { ...oConfigBase };
+        configWithFile.responseType = "blob";
+        return oApiClient.get(sUrl, configWithFile);
     },
     async onAxiosPostToFile(sUrl, oBody) {
-        oConfigBase.responseType = "blob";
-        return oApiClient.post(sUrl, oBody, oConfigBase);
+        const configWithFile = { ...oConfigBase };
+        configWithFile.responseType = "blob";
+        return oApiClient.post(sUrl, oBody, configWithFile);
     }
 }
 

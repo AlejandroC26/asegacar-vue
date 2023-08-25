@@ -24,6 +24,10 @@ const menu = [
                 text: 'Rutas',
             },
             { 
+                name: 'vehiculos',
+                text: 'Vehiculos',
+            },
+            { 
                 name: 'matrices',
                 text: 'Matrices',
             },

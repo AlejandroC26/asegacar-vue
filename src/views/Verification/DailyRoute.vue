@@ -37,20 +37,18 @@ export default {
                     nCol: 12
                 },
                 {
-                    sComponent: 'FormDualSelect',
-                    sName: 'id_daily_payroll',
-                    sLabel: {
-                        first: 'Expendio',
-                        second: '# Animal'
-                    },
-                    nCol: 12,
-                    sEndPoint: {
-                        first: { 
-                            sField: 'id_outlet',
-                            sEndPoint: 'sltAntemoremOutlets'
-                        },
-                        second: 'sltAntemoremAnimals'
-                    }
+                    sName: 'id_outlet',
+                    sLabel: 'Expendio',
+                    sComponent: 'FormSelect',
+                    sEndPoint: 'sltOutlets',
+                    nCol: 6
+                },
+                {
+                    sName: 'id_vehicle',
+                    sLabel: 'Vehiculo',
+                    sComponent: 'FormSelect',
+                    sEndPoint: 'sltVehicles',
+                    nCol: 6
                 },
                 {
                     sName: 'quantity',

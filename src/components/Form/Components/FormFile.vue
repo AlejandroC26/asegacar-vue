@@ -38,7 +38,6 @@ export default {
     methods: {
         async onDownloadFile() {
             const response = await axiosServices.onAxiosGet(`/${this.sEndPoint}/${this.oValorField.id}`);
-            console.log(response)
             let fURL = window.URL.createObjectURL(response.data);
             let fLink = document.createElement('a');
 
@@ -56,9 +55,11 @@ export default {
         value(newValue) {
             this.valor = newValue; 
         },
-        async oValorField(newValorField) {
+        oValorField(newValorField) {
             if(Object.keys(newValorField).length !== 0) {
-                this.bHaveFile = true;
+                if(newValorField[this.sKeyField]) {
+                    this.bHaveFile = true;
+                }
             } 
         }
     }

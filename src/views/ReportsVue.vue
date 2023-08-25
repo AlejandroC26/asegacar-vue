@@ -76,14 +76,7 @@ export default {
                                     sName: 'benefit_date',
                                     sLabel: 'Fecha de Beneficio',
                                     sComponent: 'FormDate',
-                                    nCol: 6
-                                },
-                                {
-                                    sName: 'format_code',
-                                    sLabel: 'Código de Formato',
-                                    sComponent: 'FormSelect',
-                                    sEndPoint: 'sltFormatCodes',
-                                    nCol: 6
+                                    nCol: 12
                                 },
                             ]
                         },
@@ -92,19 +85,19 @@ export default {
                 {
                     sVariant: 'secondary',
                     aCards: [
-                        // {
-                        //     sHeader: "Ruta Diaria",
-                        //     sEndPoint: "dailyRoutes",
-                        //     sFormatName: "Ruta Diaria",
-                        //     aComponents: [
-                        //         {
-                        //             sName: 'date',
-                        //             sLabel: 'Fecha',
-                        //             sComponent: 'FormDate',
-                        //             nCol: 12
-                        //         },
-                        //     ]
-                        // },
+                        {
+                            sHeader: "Ruta Diaria",
+                            sEndPoint: "dailyRoutes",
+                            sFormatName: "Ruta Diaria",
+                            aComponents: [
+                                {
+                                    sName: 'date',
+                                    sLabel: 'Fecha',
+                                    sComponent: 'FormDate',
+                                    nCol: 12
+                                },
+                            ]
+                        },
                         {
                             sHeader: "Orden Beneficio",
                             sEndPoint: "formBenefitOrder",
@@ -143,20 +136,6 @@ export default {
                                     sLabel: 'Fecha y Responsable',
                                     sComponent: 'FormSelect',
                                     sEndPoint: 'sltMaster/4',
-                                    nCol: 12
-                                },
-                            ]
-                        },
-                        {
-                            sHeader: "Inspección Cero Tolerancia",
-                            sEndPoint: "zeroToleranceInspection",
-                            sFormatName: "Inspección Cero Tolerancia",
-                            aComponents: [
-                                {
-                                    sName: 'id_master',
-                                    sLabel: 'Fecha y Responsable',
-                                    sComponent: 'FormSelect',
-                                    sEndPoint: 'sltMaster/5',
                                     nCol: 12
                                 },
                             ]
@@ -204,6 +183,20 @@ export default {
                                     sLabel: 'Fecha y Responsable',
                                     sComponent: 'FormSelect',
                                     sEndPoint: 'sltMaster/8',
+                                    nCol: 12
+                                },
+                            ]
+                        },
+                        {
+                            sHeader: "Inspección Cero Tolerancia",
+                            sEndPoint: "zeroToleranceInspection",
+                            sFormatName: "Inspección Cero Tolerancia",
+                            aComponents: [
+                                {
+                                    sName: 'id_master',
+                                    sLabel: 'Fecha y Responsable',
+                                    sComponent: 'FormSelect',
+                                    sEndPoint: 'sltMaster/5',
                                     nCol: 12
                                 },
                             ]

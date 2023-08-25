@@ -38,7 +38,7 @@ export default {
                 },
                 {
                     sComponent: 'FormDualSelect',
-                    sName: 'id_antemortem_daily_record',
+                    sName: 'id_daily_payroll',
                     sLabel: {
                         first: 'Expendio',
                         second: '# Animal'

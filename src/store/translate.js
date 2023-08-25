@@ -84,7 +84,9 @@ let translations = {
     booklet: 'Librillo',
     observations: 'Observaciones',
     callus: 'Callo',
-    rennet: 'Cuajo'
+    rennet: 'Cuajo',
+
+    entries: 'Registros',
 
 }
 export default {

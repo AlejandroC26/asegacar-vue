@@ -87,7 +87,13 @@ const routes = [
   {
     path: '/rutas',
     name: 'Routes',
-    component: () => import('../views/Verification/Routes'),
+    component: () => import('../views/Config/Routes'),
+    meta: { protectedRoute: true }
+  },
+  {
+    path: '/vehiculos',
+    name: 'Vehicles',
+    component: () => import('../views/Config/Vehicles'),
     meta: { protectedRoute: true }
   },
   {

@@ -48,8 +48,10 @@ export default {
         async oValorField(newValorField) {
             if(Object.keys(newValorField).length !== 0) {
                 const response = await axiosServices.onAxiosGet(`/${this.sEndPoint}/${newValorField.id}`)
-                this.sUrlPreview = response.data.data;
-                this.bLoadedPreview = true;
+                if(response.data.status !== 'Error') {
+                    this.sUrlPreview = response.data.data;
+                    this.bLoadedPreview = true;
+                }
             } 
         }
     }

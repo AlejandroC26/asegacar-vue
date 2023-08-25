@@ -18,7 +18,7 @@ import DefaultGrid from '@/components/Grid/Grid.vue';
 import Right from '@/components/Right.vue';
 
 export default {
-    name: 'MasterTable',
+    name: 'Vehicles',
     components: {
         Aside,
         Right,
@@ -26,31 +26,14 @@ export default {
     },
     data: function(){
         return {
-            sTitle: 'Planilla de Orden de Beneficio',
-            sEndPoint: 'formBenefitOrder',
+            sTitle: 'Vehiculo',
+            sEndPoint: 'vehicles',
             aFields: [
                 {
-                    sName: 'id_master',
-                    sLabel: 'Fecha y Responsable',
-                    sComponent: 'FormSelect',
-                    sEndPoint: 'sltMaster/2',
+                    sName: 'name',
+                    sLabel: 'Nombre',
+                    sComponent: 'FormText',
                     nCol: 12
-                },
-                {
-                    sComponent: 'FormDualSelect',
-                    sName: 'id_daily_payroll',
-                    sLabel: {
-                        first: 'Expendio',
-                        second: '# Animal'
-                    },
-                    nCol: 12,
-                    sEndPoint: {
-                        first: { 
-                            sField: 'id_outlet',
-                            sEndPoint: 'sltAntemoremOutlets'
-                        },
-                        second: 'sltAntemoremAnimals'
-                    }
                 },
             ]
         }
