@@ -151,6 +151,30 @@ const routes = [
     meta: { protectedRoute: true }
   },
   {
+    path: '/inspeccionantemortem',
+    name: 'AntemortemInspection',
+    component: () => import('../views/Antemortem/Inspection'),
+    meta: { protectedRoute: true }
+  },
+  {
+    path: '/registrohembrasparidas',
+    name: 'ParturientFemales',
+    component: () => import('../views/Antemortem/ParturientFemales'),
+    meta: { protectedRoute: true }
+  },
+  {
+    path: '/animalessospechosos',
+    name: 'SuspiciousAnimals',
+    component: () => import('../views/Antemortem/SuspiciousAnimals'),
+    meta: { protectedRoute: true }
+  },
+  {
+    path: '/ingresobobinosemergencia',
+    name: 'EmergencyCoilEntry',
+    component: () => import('../views/Antemortem/EmergencyCoilEntry'),
+    meta: { protectedRoute: true }
+  },
+  {
     path: '/reportes',
     name: 'ReportsVue',
     component: () => import('../views/ReportsVue'),

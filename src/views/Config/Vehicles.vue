@@ -30,9 +30,39 @@ export default {
             sEndPoint: 'vehicles',
             aFields: [
                 {
-                    sName: 'name',
-                    sLabel: 'Nombre',
+                    sName: 'plate',
+                    sLabel: 'Placa',
                     sComponent: 'FormText',
+                    nCol: 6
+                },
+                {
+                    sName: 'driver_name',
+                    sLabel: 'Nombre del conductor',
+                    sComponent: 'FormText',
+                    nCol: 6
+                },
+                {
+                    sName: 'driver_document',
+                    sLabel: 'Documento del conductor',
+                    sComponent: 'FormText',
+                    nCol: 12
+                },
+                {
+                    sName: 'refrigerated',
+                    sLabel: 'Refrigerado',
+                    sComponent: 'FormText',
+                    nCol: 6
+                },
+                {
+                    sName: 'isothermal',
+                    sLabel: 'Isotermo',
+                    sComponent: 'FormText',
+                    nCol: 6
+                },
+                {
+                    sName: 'temperature',
+                    sLabel: 'Temperatura',
+                    sComponent: 'FormNumber',
                     nCol: 12
                 },
             ]

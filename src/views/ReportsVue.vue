@@ -203,6 +203,37 @@ export default {
                         },
                     ]
                 },
+                {
+                    sVariant: 'primary',
+                    aCards: [
+                        {
+                            sHeader: "Inspección Antemortem",
+                            sEndPoint: "antemortemInspection",
+                            sFormatName: "Inspección Antemortem",
+                            aComponents: [
+                                {
+                                    sName: 'date',
+                                    sLabel: 'Fecha',
+                                    sComponent: 'FormDate',
+                                    nCol: 6
+                                },
+                                {
+                                    sName: 'time_entry',
+                                    sLabel: 'Hora Ingreso',
+                                    sComponent: 'FormTime',
+                                    nCol: 6
+                                },
+                                {
+                                    sName: 'id_veterinary',
+                                    sLabel: 'Veterinario',
+                                    sComponent: 'FormSelect',
+                                    sEndPoint: 'sltAntemortemVeterinary',
+                                    nCol: 12
+                                },
+                            ]
+                        },
+                    ]
+                },
             ]
         }
     },

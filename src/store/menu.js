@@ -40,19 +40,36 @@ const menu = [
             { 
                 name: 'codigoformato',
                 text: 'Código Formato',
-                icon: '\ue873'
             },
             { 
                 name: 'planilladiaria',
                 text: 'Planilla Diaria',
             },
-            // { 
-            //     name: 'registrodiarioantemorten',
-            //     text: 'Registro Diario Antemortem',
-            // },
             { 
                 name: 'sacrificiospendientes',
                 text: 'Sacrificios Pendientes',
+            },
+        ]
+    },
+    {
+        text: 'Ante-Mortem',
+        icon: '\ue873',
+        routes: [
+            { 
+                name: 'inspeccionantemortem',
+                text: 'Inspección Antemortem',
+            },
+            { 
+                name: 'registrohembrasparidas',
+                text: 'Registro Hembras Paridas',
+            },
+            { 
+                name: 'animalessospechosos',
+                text: 'Animales Sospechosos',
+            },
+            { 
+                name: 'ingresobobinosemergencia',
+                text: 'Ingreso Bobinos Emergencia',
             },
         ]
     },

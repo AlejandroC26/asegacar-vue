@@ -67,17 +67,19 @@ export default {
             } else {
                 options = this.aOptions;
             }
-            options.forEach(oItem => {
-                let sText = '';
-                if(oItem.hasOwnProperty('name')) {
-                    sText = oItem.name;
-                } else if(oItem.hasOwnProperty('code')) {
-                    sText = oItem.code;
-                } else {
-                    sText = oItem.description;
-                }
-                aNewOptions = [...aNewOptions, { id: oItem.id, name: sText }]
-            });
+            if(Array.isArray(options)) {
+                options.forEach(oItem => {
+                    let sText = '';
+                    if(oItem.hasOwnProperty('name')) {
+                        sText = oItem.name;
+                    } else if(oItem.hasOwnProperty('code')) {
+                        sText = oItem.code;
+                    } else {
+                        sText = oItem.description;
+                    }
+                    aNewOptions = [...aNewOptions, { id: oItem.id, name: sText }]
+                });
+            }
             this.options = aNewOptions;
             this.loadSelect = false;
         },

@@ -9,9 +9,4 @@ module.exports = {
       return args;
     });
   },
-  
-
-  // Configurar la URL base de la aplicación
-  publicPath: process.env.NODE_ENV === 'production' ? '/mi-app/' : '/',
-  
 };

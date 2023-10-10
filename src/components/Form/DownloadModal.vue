@@ -100,20 +100,19 @@ export default {
     onClose() {
       this.$emit("close");
     },
-    onDownLoadFormat(){
-      axiosServices.onAxiosPostToFile(`${this.sEndPoint}Format`, this.oFormField).then(aResponse => {
-        if(aResponse.status === 200) {
-          const url = window.URL.createObjectURL(new Blob([aResponse.data]));
-          const link = document.createElement('a');
-          link.href = url;
-          link.setAttribute('download', `${this.sFormatName}.xlsx`);
-          document.body.appendChild(link);
-          link.click();
-          this.$emit('saveOK', true);
-        } else {
-          console.log(aResponse)
-        }
-      })
+    async onDownLoadFormat(){
+      const aResponse = await axiosServices.onAxiosPostToFile(`${this.sEndPoint}Format`, this.oFormField)
+      if(aResponse.status === 200) {
+        const url = window.URL.createObjectURL(new Blob([aResponse.data]));
+        const link = document.createElement('a');
+        link.href = url;
+        link.setAttribute('download', `${this.sFormatName}.xlsx`);
+        document.body.appendChild(link);
+        link.click();
+        this.$emit('saveOK', true);
+      } else {
+        console.log(aResponse)
+      }
     },
     onGetValuesForm(index, data) {
       // If data size is set this is file

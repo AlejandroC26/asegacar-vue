@@ -88,7 +88,31 @@ let translations = {
 
     entries: 'Registros',
 
-}
+    plate: 'Placa',
+    driver_name: 'Nombre conductor',
+    driver_document: 'Documento conductor',
+    refrigerated: 'Refrigerado',
+    isothermal: 'Isotermo',
+    temperature: 'Temperatura',
+
+    corral_number: '# Corral',
+    guide: 'Guía',
+    animal_code: '# Animal',
+    corral_entry: 'Hora de ingreso a corral de sacrificio',
+    time_off: 'Tiempo de descanso',
+    veterinary: 'Veterinario',
+
+    
+    delivery_time: 'Hora Parto',
+    iron: 'Hierro',
+    corral_location: 'Ubicación corral',
+    weight: 'Peso',
+    heart_frequency: 'Frecuencia Cardiaca',
+    respiratory_frequency: 'Frecuencia Respiratoria',
+    findings: 'Hallazgos',
+    final_definition_feto: 'Disposición Final Feto',
+    
+}   
 export default {
     getTranslation(string) { return (translations[string] ?? string).toUpperCase();}
 }

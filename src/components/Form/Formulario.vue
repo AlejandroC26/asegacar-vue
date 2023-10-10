@@ -47,6 +47,7 @@ import FormPassword from "./Components/FormPassword.vue";
 import FormMultiSelect from "./Components/FormMultiSelect.vue";
 import FormSelect from "./Components/FormSelect.vue";
 import FormDate from "./Components/FormDate.vue";
+import FormDateTime from "./Components/FormDateTime.vue";
 import FormTime from "./Components/FormTime.vue";
 import FormFile from "./Components/FormFile.vue";
 import FormFileImage from "./Components/FormFileImage.vue";
@@ -107,7 +108,8 @@ export default {
     FormDepartmentCity,
     FormOptionalDate,
     FormDualSelect,
-    DailyPayrollTable
+    DailyPayrollTable,
+    FormDateTime
   },
   data() {
     return {
@@ -137,14 +139,11 @@ export default {
           return console.log(response.data.errors)
         } else {
           if(response?.data.status === 'Success') {
-            //alert('registro exitoso');
-            console.log(response.data)
             this.$emit('saveOK', true);
           } else {
             console.log(response)
           }
         }
-        //console.log(response)
       })
     },
     onUpdateForm() {
@@ -163,7 +162,7 @@ export default {
       if(data && data.size) {
         this.oFormField[index] = data;
       } else {
-        this.oFormField[index] = (Array.isArray(data)) ? data : (typeof data == 'object') ? data.id : data
+        this.oFormField[index] = (Array.isArray(data)) ? data : (typeof data == 'object') ? data?.id : data
       }
       const oDepends = this.aChangeComponents.findIndex(component => component.sDependsOn === index);
       if(oDepends >= 0) {

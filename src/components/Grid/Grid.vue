@@ -27,7 +27,7 @@
             ></b-form-select>
           </b-input-group>
         </b-col>
-        <b-col lg="4" style="display: flex" class="justify-content-end">
+        <b-col sm="4" style="display: flex" class="justify-content-end">
           <b-button v-if="!bDisableRegister" @click="onShowModal('new')">NUEVO REGISTRO</b-button>
         </b-col>
       </b-row>
@@ -51,6 +51,7 @@
               <b-button-group>
                 <b-button size="sm" variant="none" v-if="!bDisableUpdate" @click="onShowModal('edit', data.item.id)"><b-icon icon="pencil-fill"/></b-button>
                 <b-button size="sm" variant="none" v-if="!bDisableDelete" @click="onDelete(data.item.id)"><b-icon icon="trash-fill"/></b-button>
+                <b-button size="sm" variant="none" v-if="bEnablePdf" @click="onDownloadPDF(data.item.id)"><b-icon icon="file-pdf-fill"/></b-button>
               </b-button-group>
             </template>
           </b-table>
@@ -98,6 +99,10 @@ export default {
       type: String,
       default: "",
     },
+    bEnablePdf: {
+      type: Boolean,
+      default: false
+    },
     sFormSize: {
       type: String,
       default: "",
@@ -135,30 +140,43 @@ export default {
     this.onGetData();
   },
   methods: {
-    onGetData(){
-      axiosServices.onAxiosGet(this.sEndPoint).then(res => {
-        this.aItems = res.data;
-        if(this.aItems.length > 0) {
-          let fields = [];
-          fields = [...fields, { key: 'actions', label: "", sortable: false }]
-          let aHeaders = Object.keys(res.data[0]);
-          aHeaders.forEach(sValue => {
-            if(!sValue.includes('id_')) {
-              let label = translate.getTranslation(sValue);
-              let thStyle = '';
-              if(label.length > 20) {
-                thStyle = 'width: 200px; display: inline-block;';
-              }
-              fields = [
-                ...fields, { key: sValue, label, sortable: false, thStyle }
-              ]
-              
+    async onGetData(){
+      const res = await axiosServices.onAxiosGet(this.sEndPoint)
+      this.aItems = res.data;
+      if(this.aItems.length > 0) {
+        let fields = [];
+        fields = [...fields, { key: 'actions', label: "", sortable: false }]
+        let aHeaders = Object.keys(res.data[0]);
+        aHeaders.forEach(sValue => {
+          if(!sValue.includes('id_')) {
+            let label = translate.getTranslation(sValue);
+            let thStyle = '';
+            if(label.length > 20) {
+              thStyle = 'width: 200px; display: inline-block;';
             }
-          });
-          this.aFields = fields;
-          this.nKey += 1;
-        }
-      })
+            fields = [
+              ...fields, { key: sValue, label, sortable: false, thStyle }
+            ]
+            
+          }
+        });
+        this.aFields = fields;
+        this.nKey += 1;
+      }
+    },
+    async onDownloadPDF(id) {
+      const aResponse = await axiosServices.onAxiosPostToFile(`${this.sEndPoint}Format/${id}`)
+      if(aResponse.status === 200) {
+        const url = window.URL.createObjectURL(new Blob([aResponse.data]));
+        const link = document.createElement('a');
+        link.href = url;
+        link.setAttribute('download', `${this.sTitle.replace(/\s/g, '')}.xlsx`);
+        document.body.appendChild(link);
+        link.click();
+        this.$emit('saveOK', true);
+      } else {
+        console.log(aResponse)
+      }
     },
     onDelete(nIdDel) {
       this.$swal({

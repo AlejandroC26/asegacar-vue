@@ -24,7 +24,7 @@ export default new Vuex.Store({
     },
     state: {
         token: null,
-        //api_url: 'https://multinivel3b.com',
+        // api_url: 'https://apiasegacar.planhf.com',
         api_url: 'http://127.0.0.1:8000',
         session_user: {
             id: '',
